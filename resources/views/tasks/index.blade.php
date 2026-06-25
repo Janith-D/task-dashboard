@@ -18,7 +18,7 @@
                     <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">T</div>
                     <div>
                         <h1 class="text-lg font-semibold text-gray-900">Task Dashboard</h1>
-                        <p class="text-xs text-gray-500">{{ count($tasks) }} total tasks</p>
+                        <p class="text-xs text-gray-500"><span x-text="tasks.length"></span> total tasks</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
@@ -104,13 +104,12 @@
                 {{-- Pending Column --}}
                 <div class="rounded-xl bg-gray-100/80 p-4">
                     <div class="mb-3 flex items-center gap-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 text-xs font-bold text-yellow-800">{{ filteredTasks('pending').length }}</span>
+                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 text-xs font-bold text-yellow-800" x-text="filteredTasks('pending').length"></span>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Pending</h3>
                     </div>
                     <div class="space-y-3">
                         <template x-for="task in filteredTasks('pending')" :key="task.id">
-                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow"
-                                x-data="{ open: false }">
+                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow">
                                 <div class="flex items-start justify-between gap-2">
                                     <h4 class="text-sm font-medium text-gray-900" x-text="task.title"></h4>
                                     <button @click="deleteTask(task.id)"
@@ -143,13 +142,12 @@
                 {{-- In Progress Column --}}
                 <div class="rounded-xl bg-gray-100/80 p-4">
                     <div class="mb-3 flex items-center gap-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-800">{{ filteredTasks('in_progress').length }}</span>
+                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-800" x-text="filteredTasks('in_progress').length"></span>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">In Progress</h3>
                     </div>
                     <div class="space-y-3">
                         <template x-for="task in filteredTasks('in_progress')" :key="task.id">
-                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow"
-                                x-data="{ open: false }">
+                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow">
                                 <div class="flex items-start justify-between gap-2">
                                     <h4 class="text-sm font-medium text-gray-900" x-text="task.title"></h4>
                                     <button @click="deleteTask(task.id)"
@@ -182,13 +180,12 @@
                 {{-- Completed Column --}}
                 <div class="rounded-xl bg-gray-100/80 p-4">
                     <div class="mb-3 flex items-center gap-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-800">{{ filteredTasks('completed').length }}</span>
+                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-800" x-text="filteredTasks('completed').length"></span>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Completed</h3>
                     </div>
                     <div class="space-y-3">
                         <template x-for="task in filteredTasks('completed')" :key="task.id">
-                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow"
-                                x-data="{ open: false }">
+                            <div class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow">
                                 <div class="flex items-start justify-between gap-2">
                                     <h4 class="text-sm font-medium text-gray-900" x-text="task.title"></h4>
                                     <button @click="deleteTask(task.id)"

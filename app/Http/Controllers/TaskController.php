@@ -50,9 +50,13 @@ class TaskController
         ]);
     }
 
-    public function destroy(Task $task): RedirectResponse
+    public function destroy(Request $request, Task $task): JsonResponse|RedirectResponse
     {
         $task->delete();
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Task deleted successfully.']);
+        }
 
         return redirect()
             ->route('task.index')
